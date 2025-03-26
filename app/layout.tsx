@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "M.P. Solutions",
-	description: "All medicine info at one place",
+	title: "AI TripMate",
+	description: "Your favourite travel companion",
 };
 
 export default function RootLayout({
