@@ -75,7 +75,7 @@ export function TestimonialsSection() {
                         <CardContent className="p-8">
                             <div className="flex flex-col items-center text-center">
                                 <Quote className="h-12 w-12 text-[#00A699] mb-6" />
-                                <p className="text-lg mb-8 italic">"{activeTestimonial.quote}"</p>
+                                <p className="text-lg mb-8 italic">&quot;{activeTestimonial.quote}&quot;</p>
                                 <div className="flex items-center mb-4">
                                     <Image
                                         src={activeTestimonial.photo || "/placeholder.svg"}

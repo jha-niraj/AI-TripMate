@@ -1,12 +1,9 @@
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
 import { Chatbot } from "@/components/chatbot"
-import { FullItineraryPlanner } from "@/components/full-itinerary-planner"
+import { FullItineraryPlanner } from "./fullitenaryplanner"
 
 export default function ItineraryPlannerPage() {
     return (
         <div className="min-h-screen bg-white">
-            <Navbar />
             <main>
                 <div className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
                     <div

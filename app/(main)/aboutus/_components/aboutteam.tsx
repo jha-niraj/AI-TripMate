@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export function AboutTeam() {
@@ -34,7 +35,7 @@ export function AboutTeam() {
                 <div className="max-w-3xl mx-auto text-center mb-16">
                     <h2 className="text-3xl font-bold mb-6">Meet Our Team</h2>
                     <p className="text-lg text-gray-600">
-                        We're a diverse group of travel enthusiasts, AI specialists, and technology innovators united by our passion
+                        We&apos;re a diverse group of travel enthusiasts, AI specialists, and technology innovators united by our passion
                         for transforming the travel experience.
                     </p>
                 </div>
@@ -43,10 +44,12 @@ export function AboutTeam() {
                         team.map((member, index) => (
                             <div key={index} className="text-center">
                                 <div className="mb-4 overflow-hidden rounded-full mx-auto w-48 h-48">
-                                    <img
+                                    <Image
                                         src={member.image || "/placeholder.svg"}
                                         alt={member.name}
                                         className="w-full h-full object-cover"
+                                        height={40}
+                                        width={40}
                                     />
                                 </div>
                                 <h3 className="text-xl font-semibold">{member.name}</h3>
@@ -59,8 +62,8 @@ export function AboutTeam() {
                 <div className="mt-16 text-center">
                     <h3 className="text-2xl font-semibold mb-6">Join Our Team</h3>
                     <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-                        We're always looking for passionate individuals to join our mission of transforming travel planning. If
-                        you're excited about AI, travel, or creating exceptional user experiences, we'd love to hear from you.
+                        We&apos;re always looking for passionate individuals to join our mission of transforming travel planning. If
+                        you&apos;re excited about AI, travel, or creating exceptional user experiences, we&apos;d love to hear from you.
                     </p>
                     <Link
                         href="#"

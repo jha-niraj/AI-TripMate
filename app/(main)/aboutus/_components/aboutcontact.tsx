@@ -20,7 +20,7 @@ export function AboutContact() {
                 >
                     <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
                     <p className="text-lg text-gray-600">
-                        Have questions, feedback, or partnership opportunities? We'd love to hear from you.
+                        Have questions, feedback, or partnership opportunities? We&apos;d love to hear from you.
                     </p>
                 </motion.div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -150,7 +150,7 @@ export function AboutContact() {
                                         {
                                             ["facebook", "instagram", "twitter", "linkedin"].map((social, index) => (
                                                 <motion.a
-                                                    key={social}
+                                                    key={index}
                                                     href="#"
                                                     className="bg-[#e6f7f6] p-2 rounded-full text-[#00A699] hover:bg-[#00A699] hover:text-white transition-colors"
                                                     whileHover={{ y: -5, scale: 1.2 }}

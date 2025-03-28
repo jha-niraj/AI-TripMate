@@ -2,6 +2,7 @@ import { MessageSquare, ThumbsUp, Users } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface CommunityPost {
     id: string
@@ -70,7 +71,7 @@ export function CommunitySection() {
                         <h2 className="text-3xl font-bold mb-4">Traveler Community</h2>
                         <p className="text-gray-600 max-w-2xl">
                             Connect with fellow travelers, share your experiences, and get authentic recommendations from people
-                            who've been there.
+                            who&apos;ve been there.
                         </p>
                     </div>
                     <Button className="mt-6 md:mt-0 bg-[#00A699] hover:bg-[#008b80]">
@@ -97,10 +98,12 @@ export function CommunitySection() {
                                     {
                                         post.image && (
                                             <div className="mb-4 rounded-lg overflow-hidden">
-                                                <img
+                                                <Image
                                                     src={post.image || "/placeholder.svg"}
                                                     alt="Travel moment"
                                                     className="w-full h-64 object-cover"
+                                                    height={40}
+                                                    width={40}
                                                 />
                                             </div>
                                         )

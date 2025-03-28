@@ -5,14 +5,25 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import Image from "next/image";
-import { ArrowRight, FileText, Menu, Route } from "lucide-react";
+import { FileText, Menu, Route } from "lucide-react";
 // import { useToast } from "@/hooks/use-toast";
 // import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useSession } from "next-auth/react";
 
+// const container = {
+//     hidden: { opacity: 0 },
+//     show: {
+//         opacity: 1,
+//         transition: {
+//             staggerChildren: 0.1
+//         }
+//     }
+// }
+// const item = {
+//     hidden: { opacity: 0, x: -20 },
+//     show: { opacity: 1, x: 0 }
+// }
 interface ResourceItem {
     icon: React.ElementType
     title: string
@@ -53,8 +64,8 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     // const { toast } = useToast();
     // const router = useRouter();
-    const [dropdownActive, setDropdownActive] = useState<boolean>(false);
-    const [toolsDropdownActive, setToolsDropdownActive] = useState<boolean>(false);
+    // const [dropdownActive, setDropdownActive] = useState<boolean>(false);
+    // const [toolsDropdownActive, setToolsDropdownActive] = useState<boolean>(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -72,19 +83,6 @@ export default function Navbar() {
         };
     }, []);
 
-    const container = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    }
-    const item = {
-        hidden: { opacity: 0, x: -20 },
-        show: { opacity: 1, x: 0 }
-    }
     const handleLinkClick = () => {
         setSheetOpen(false);
     };

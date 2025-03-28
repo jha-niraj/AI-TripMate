@@ -1,8 +1,8 @@
 "use client"
 
-import { Target, Heart, Globe } from "lucide-react"
-import { motion } from "framer-motion"
-import { StaggerContainer, StaggerItem } from "@/components/motion-wrapper"
+import { Target, Heart, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+import { StaggerContainer, StaggerItem } from "@/components/motionwrapper";
 
 export function AboutMission() {
     return (
@@ -17,7 +17,7 @@ export function AboutMission() {
                 >
                     <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
                     <p className="text-lg text-gray-600">
-                        At AI Trip Mate, we're on a mission to transform how people plan and experience travel. We believe that
+                        At AI Trip Mate, we&apos;re on a mission to transform how people plan and experience travel. We believe that
                         every journey should be personalized, stress-free, and filled with authentic experiences that create lasting
                         memories.
                     </p>
@@ -58,7 +58,7 @@ export function AboutMission() {
                             </motion.div>
                             <h3 className="text-xl font-semibold mb-4">Our Values</h3>
                             <p className="text-gray-600">
-                                We're guided by authenticity, innovation, inclusivity, and a deep respect for diverse cultures and
+                                We&apos;re guided by authenticity, innovation, inclusivity, and a deep respect for diverse cultures and
                                 sustainable travel practices that benefit local communities.
                             </p>
                         </motion.div>
@@ -78,7 +78,7 @@ export function AboutMission() {
                             </motion.div>
                             <h3 className="text-xl font-semibold mb-4">Our Impact</h3>
                             <p className="text-gray-600">
-                                We're committed to promoting responsible tourism and supporting local economies by connecting travelers
+                                We&apos;re committed to promoting responsible tourism and supporting local economies by connecting travelers
                                 with authentic experiences that respect local cultures and environments.
                             </p>
                         </motion.div>
@@ -103,7 +103,7 @@ export function AboutMission() {
                             travelers discover new destinations, plan detailed itineraries, and connect with like-minded explorers.
                         </p>
                         <p className="text-gray-600">
-                            Today, we're proud to be at the forefront of AI-powered travel planning, constantly innovating and
+                            Today, we&apos;re proud to be at the forefront of AI-powered travel planning, constantly innovating and
                             expanding our offerings to help travelers experience the world in more meaningful ways.
                         </p>
                     </div>

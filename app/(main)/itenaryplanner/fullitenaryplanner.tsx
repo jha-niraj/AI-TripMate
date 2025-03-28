@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import {
-    Calendar, Clock, Plus, Trash2, ArrowUp, 
-    ArrowDown, Save, Share2, Download, FileText, MapPin } from "lucide-react"
+    Calendar, Clock, Plus, Trash2, ArrowUp,
+    ArrowDown, Save, Share2, Download, FileText, MapPin
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -305,354 +306,354 @@ export function FullItineraryPlanner() {
                 </TabsList>
                 <TabsContent value="existing">
                     {
-                    itineraries.length === 0 ? (
-                        <FadeIn className="text-center py-12">
-                            <h3 className="text-xl font-medium mb-2">No Itineraries Yet</h3>
-                            <p className="text-gray-500 mb-6">Create your first itinerary to get started</p>
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button onClick={() => document.querySelector('[data-value="create"]')?.click()}>
-                                    Create New Itinerary
-                                </Button>
-                            </motion.div>
-                        </FadeIn>
-                    ) : (
-                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                            <SlideInLeft className="lg:col-span-1">
-                                <Card>
-                                    <CardHeader>
-                                        <CardTitle>My Itineraries</CardTitle>
-                                        <CardDescription>Select an itinerary to edit</CardDescription>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <StaggerContainer className="space-y-2">
-                                            {
-                                            itineraries.map((itin, index) => (
-                                                <StaggerItem key={itin.id} index={index}>
-                                                    <motion.div
-                                                        className={`p-3 rounded-md cursor-pointer transition-colors ${activeItineraryId === itin.id
-                                                            ? "bg-[#00A699] text-white"
-                                                            : "bg-gray-100 hover:bg-gray-200"
-                                                            }`}
-                                                        onClick={() => setActiveItineraryId(itin.id)}
-                                                        whileHover={{ x: 5 }}
-                                                        transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                                                    >
-                                                        <div className="font-medium">{itin.name}</div>
-                                                        <div className="text-sm flex items-center">
-                                                            <MapPin className="h-3 w-3 mr-1" />
-                                                            {itin.destination}
-                                                        </div>
-                                                        <div className="text-sm mt-1">
-                                                            {new Date(itin.startDate).toLocaleDateString()} -{" "}
-                                                            {new Date(itin.endDate).toLocaleDateString()}
-                                                        </div>
-                                                        {
-                                                        activeItineraryId === itin.id && (
+                        itineraries.length === 0 ? (
+                            <FadeIn className="text-center py-12">
+                                <h3 className="text-xl font-medium mb-2">No Itineraries Yet</h3>
+                                <p className="text-gray-500 mb-6">Create your first itinerary to get started</p>
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                    <Button>
+                                        Create New Itinerary
+                                    </Button>
+                                </motion.div>
+                            </FadeIn>
+                        ) : (
+                            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                                <SlideInLeft className="lg:col-span-1">
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle>My Itineraries</CardTitle>
+                                            <CardDescription>Select an itinerary to edit</CardDescription>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <StaggerContainer className="space-y-2">
+                                                {
+                                                    itineraries.map((itin, index) => (
+                                                        <StaggerItem key={itin.id} index={index}>
                                                             <motion.div
-                                                                initial={{ opacity: 0, y: 10 }}
-                                                                animate={{ opacity: 1, y: 0 }}
-                                                                transition={{ duration: 0.3 }}
+                                                                className={`p-3 rounded-md cursor-pointer transition-colors ${activeItineraryId === itin.id
+                                                                    ? "bg-[#00A699] text-white"
+                                                                    : "bg-gray-100 hover:bg-gray-200"
+                                                                    }`}
+                                                                onClick={() => setActiveItineraryId(itin.id)}
+                                                                whileHover={{ x: 5 }}
+                                                                transition={{ type: "spring", stiffness: 300, damping: 10 }}
                                                             >
-                                                                <Button
-                                                                    variant="ghost"
-                                                                    size="sm"
-                                                                    className="mt-2 text-white hover:bg-[#008b80] hover:text-white"
-                                                                    onClick={() => deleteItinerary(itin.id)}
-                                                                >
-                                                                    <Trash2 className="h-4 w-4 mr-1" />
-                                                                    Delete
+                                                                <div className="font-medium">{itin.name}</div>
+                                                                <div className="text-sm flex items-center">
+                                                                    <MapPin className="h-3 w-3 mr-1" />
+                                                                    {itin.destination}
+                                                                </div>
+                                                                <div className="text-sm mt-1">
+                                                                    {new Date(itin.startDate).toLocaleDateString()} -{" "}
+                                                                    {new Date(itin.endDate).toLocaleDateString()}
+                                                                </div>
+                                                                {
+                                                                    activeItineraryId === itin.id && (
+                                                                        <motion.div
+                                                                            initial={{ opacity: 0, y: 10 }}
+                                                                            animate={{ opacity: 1, y: 0 }}
+                                                                            transition={{ duration: 0.3 }}
+                                                                        >
+                                                                            <Button
+                                                                                variant="ghost"
+                                                                                size="sm"
+                                                                                className="mt-2 text-white hover:bg-[#008b80] hover:text-white"
+                                                                                onClick={() => deleteItinerary(itin.id)}
+                                                                            >
+                                                                                <Trash2 className="h-4 w-4 mr-1" />
+                                                                                Delete
+                                                                            </Button>
+                                                                        </motion.div>
+                                                                    )
+                                                                }
+                                                            </motion.div>
+                                                        </StaggerItem>
+                                                    ))
+                                                }
+                                            </StaggerContainer>
+                                        </CardContent>
+                                    </Card>
+                                </SlideInLeft>
+                                <SlideInRight className="lg:col-span-3">
+                                    {
+                                        activeItinerary ? (
+                                            <div className="space-y-6">
+                                                <Card>
+                                                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                                                        <div>
+                                                            <CardTitle className="text-2xl">{activeItinerary.name}</CardTitle>
+                                                            <CardDescription>
+                                                                {activeItinerary.destination} • {new Date(activeItinerary.startDate).toLocaleDateString()}{" "}
+                                                                to {new Date(activeItinerary.endDate).toLocaleDateString()}
+                                                            </CardDescription>
+                                                        </div>
+                                                        <div className="flex space-x-2">
+                                                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                                                <Button variant="outline" size="sm">
+                                                                    <Share2 className="h-4 w-4 mr-1" />
+                                                                    Share
                                                                 </Button>
                                                             </motion.div>
-                                                        )
-                                                        }
-                                                    </motion.div>
-                                                </StaggerItem>
-                                            ))
-                                            }
-                                        </StaggerContainer>
-                                    </CardContent>
-                                </Card>
-                            </SlideInLeft>
-                            <SlideInRight className="lg:col-span-3">
-                                {
-                                activeItinerary ? (
-                                    <div className="space-y-6">
-                                        <Card>
-                                            <CardHeader className="flex flex-row items-center justify-between pb-2">
-                                                <div>
-                                                    <CardTitle className="text-2xl">{activeItinerary.name}</CardTitle>
-                                                    <CardDescription>
-                                                        {activeItinerary.destination} • {new Date(activeItinerary.startDate).toLocaleDateString()}{" "}
-                                                        to {new Date(activeItinerary.endDate).toLocaleDateString()}
-                                                    </CardDescription>
-                                                </div>
-                                                <div className="flex space-x-2">
-                                                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                                        <Button variant="outline" size="sm">
-                                                            <Share2 className="h-4 w-4 mr-1" />
-                                                            Share
-                                                        </Button>
-                                                    </motion.div>
-                                                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                                        <Button variant="outline" size="sm">
-                                                            <Download className="h-4 w-4 mr-1" />
-                                                            Export
-                                                        </Button>
-                                                    </motion.div>
-                                                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                                        <Button size="sm" className="bg-[#00A699] hover:bg-[#008b80]" onClick={saveItinerary}>
-                                                            <Save className="h-4 w-4 mr-1" />
-                                                            Save
-                                                        </Button>
-                                                    </motion.div>
-                                                </div>
-                                            </CardHeader>
-                                            <CardContent>
-                                                <FadeIn className="mb-6">
-                                                    <Label htmlFor="itinerary-notes">Trip Notes</Label>
-                                                    <Textarea
-                                                        id="itinerary-notes"
-                                                        placeholder="Add general notes about your trip..."
-                                                        className="mt-1"
-                                                        value={activeItinerary.notes}
-                                                        onChange={(e) => updateItineraryNotes(e.target.value)}
-                                                    />
-                                                </FadeIn>
-                                                <FadeIn className="mb-6">
-                                                    <Label htmlFor="new-day-date">Add a new day</Label>
-                                                    <div className="flex gap-2 mt-1">
-                                                        <Input
-                                                            id="new-day-date"
-                                                            type="date"
-                                                            min={activeItinerary.startDate}
-                                                            max={activeItinerary.endDate}
-                                                            onChange={(e) => e.target.value && addDay(e.target.value)}
-                                                        />
-                                                    </div>
-                                                </FadeIn>
-                                                <StaggerContainer className="space-y-6">
-                                                    {
-                                                    activeItinerary.days.length === 0 ? (
-                                                        <FadeIn className="text-center py-8 bg-gray-50 rounded-lg">
-                                                            <p className="text-gray-500">Add a day to start planning your itinerary</p>
+                                                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                                                <Button variant="outline" size="sm">
+                                                                    <Download className="h-4 w-4 mr-1" />
+                                                                    Export
+                                                                </Button>
+                                                            </motion.div>
+                                                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                                                <Button size="sm" className="bg-[#00A699] hover:bg-[#008b80]" onClick={saveItinerary}>
+                                                                    <Save className="h-4 w-4 mr-1" />
+                                                                    Save
+                                                                </Button>
+                                                            </motion.div>
+                                                        </div>
+                                                    </CardHeader>
+                                                    <CardContent>
+                                                        <FadeIn className="mb-6">
+                                                            <Label htmlFor="itinerary-notes">Trip Notes</Label>
+                                                            <Textarea
+                                                                id="itinerary-notes"
+                                                                placeholder="Add general notes about your trip..."
+                                                                className="mt-1"
+                                                                value={activeItinerary.notes}
+                                                                onChange={(e) => updateItineraryNotes(e.target.value)}
+                                                            />
                                                         </FadeIn>
-                                                    ) : (
-                                                        activeItinerary.days.map((day, dayIndex) => (
-                                                            <StaggerItem key={day.date} index={dayIndex}>
-                                                                <motion.div
-                                                                    whileHover={{ y: -5 }}
-                                                                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                                                                >
-                                                                    <Card className="border-l-4 border-l-[#00A699]">
-                                                                        <CardHeader className="pb-3">
-                                                                            <CardTitle className="text-lg flex items-center">
-                                                                                <Calendar className="mr-2 h-5 w-5 text-[#00A699]" />
-                                                                                {
-                                                                                new Date(day.date).toLocaleDateString("en-US", {
-                                                                                    weekday: "long",
-                                                                                    year: "numeric",
-                                                                                    month: "long",
-                                                                                    day: "numeric",
-                                                                                })
-                                                                                }
-                                                                            </CardTitle>
-                                                                        </CardHeader>
-                                                                        <CardContent>
-                                                                            <div className="space-y-4">
-                                                                                <AnimatePresence>
-                                                                                    {
-                                                                                    day.items.length === 0 ? (
-                                                                                        <FadeIn className="text-center py-4 bg-gray-50 rounded-lg">
-                                                                                            <p className="text-gray-500">No activities planned for this day</p>
-                                                                                        </FadeIn>
-                                                                                    ) : (
-                                                                                        day.items.map((item, itemIndex) => (
-                                                                                            <motion.div
-                                                                                                key={item.id}
-                                                                                                initial={{ opacity: 0, y: 20 }}
-                                                                                                animate={{ opacity: 1, y: 0 }}
-                                                                                                exit={{ opacity: 0, y: -20 }}
-                                                                                                transition={{ duration: 0.3 }}
-                                                                                                className="flex flex-col gap-3 p-4 bg-gray-50 rounded-md"
-                                                                                            >
-                                                                                                <div className="flex items-center justify-between">
-                                                                                                    <div className="flex items-center">
-                                                                                                        <motion.div
-                                                                                                            className="mr-2"
-                                                                                                            whileHover={{ scale: 1.2, rotate: 10 }}
-                                                                                                            transition={{ duration: 0.3 }}
-                                                                                                        >
-                                                                                                            {getCategoryIcon(item.category)}
-                                                                                                        </motion.div>
-                                                                                                        <div className="font-medium">
-                                                                                                            {item.time} - {item.activity || "Untitled Activity"}
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div className="flex space-x-1">
-                                                                                                        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                                                                                                            <Button
-                                                                                                                variant="ghost"
-                                                                                                                size="icon"
-                                                                                                                onClick={() => moveItem(dayIndex, itemIndex, "up")}
-                                                                                                                disabled={itemIndex === 0}
-                                                                                                                className="h-8 w-8 text-gray-500"
+                                                        <FadeIn className="mb-6">
+                                                            <Label htmlFor="new-day-date">Add a new day</Label>
+                                                            <div className="flex gap-2 mt-1">
+                                                                <Input
+                                                                    id="new-day-date"
+                                                                    type="date"
+                                                                    min={activeItinerary.startDate}
+                                                                    max={activeItinerary.endDate}
+                                                                    onChange={(e) => e.target.value && addDay(e.target.value)}
+                                                                />
+                                                            </div>
+                                                        </FadeIn>
+                                                        <StaggerContainer className="space-y-6">
+                                                            {
+                                                                activeItinerary.days.length === 0 ? (
+                                                                    <FadeIn className="text-center py-8 bg-gray-50 rounded-lg">
+                                                                        <p className="text-gray-500">Add a day to start planning your itinerary</p>
+                                                                    </FadeIn>
+                                                                ) : (
+                                                                    activeItinerary.days.map((day, dayIndex) => (
+                                                                        <StaggerItem key={day.date} index={dayIndex}>
+                                                                            <motion.div
+                                                                                whileHover={{ y: -5 }}
+                                                                                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                                                                            >
+                                                                                <Card className="border-l-4 border-l-[#00A699]">
+                                                                                    <CardHeader className="pb-3">
+                                                                                        <CardTitle className="text-lg flex items-center">
+                                                                                            <Calendar className="mr-2 h-5 w-5 text-[#00A699]" />
+                                                                                            {
+                                                                                                new Date(day.date).toLocaleDateString("en-US", {
+                                                                                                    weekday: "long",
+                                                                                                    year: "numeric",
+                                                                                                    month: "long",
+                                                                                                    day: "numeric",
+                                                                                                })
+                                                                                            }
+                                                                                        </CardTitle>
+                                                                                    </CardHeader>
+                                                                                    <CardContent>
+                                                                                        <div className="space-y-4">
+                                                                                            <AnimatePresence>
+                                                                                                {
+                                                                                                    day.items.length === 0 ? (
+                                                                                                        <FadeIn className="text-center py-4 bg-gray-50 rounded-lg">
+                                                                                                            <p className="text-gray-500">No activities planned for this day</p>
+                                                                                                        </FadeIn>
+                                                                                                    ) : (
+                                                                                                        day.items.map((item, itemIndex) => (
+                                                                                                            <motion.div
+                                                                                                                key={item.id}
+                                                                                                                initial={{ opacity: 0, y: 20 }}
+                                                                                                                animate={{ opacity: 1, y: 0 }}
+                                                                                                                exit={{ opacity: 0, y: -20 }}
+                                                                                                                transition={{ duration: 0.3 }}
+                                                                                                                className="flex flex-col gap-3 p-4 bg-gray-50 rounded-md"
                                                                                                             >
-                                                                                                                <ArrowUp className="h-4 w-4" />
-                                                                                                            </Button>
-                                                                                                        </motion.div>
-                                                                                                        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                                                                                                            <Button
-                                                                                                                variant="ghost"
-                                                                                                                size="icon"
-                                                                                                                onClick={() => moveItem(dayIndex, itemIndex, "down")}
-                                                                                                                disabled={itemIndex === day.items.length - 1}
-                                                                                                                className="h-8 w-8 text-gray-500"
-                                                                                                            >
-                                                                                                                <ArrowDown className="h-4 w-4" />
-                                                                                                            </Button>
-                                                                                                        </motion.div>
-                                                                                                        <motion.div
-                                                                                                            whileHover={{ scale: 1.2, rotate: 10 }}
-                                                                                                            whileTap={{ scale: 0.9 }}
-                                                                                                        >
-                                                                                                            <Button
-                                                                                                                variant="ghost"
-                                                                                                                size="icon"
-                                                                                                                onClick={() => removeItem(dayIndex, itemIndex)}
-                                                                                                                className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50"
-                                                                                                            >
-                                                                                                                <Trash2 className="h-4 w-4" />
-                                                                                                            </Button>
-                                                                                                        </motion.div>
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                                                <div className="flex items-center justify-between">
+                                                                                                                    <div className="flex items-center">
+                                                                                                                        <motion.div
+                                                                                                                            className="mr-2"
+                                                                                                                            whileHover={{ scale: 1.2, rotate: 10 }}
+                                                                                                                            transition={{ duration: 0.3 }}
+                                                                                                                        >
+                                                                                                                            {getCategoryIcon(item.category)}
+                                                                                                                        </motion.div>
+                                                                                                                        <div className="font-medium">
+                                                                                                                            {item.time} - {item.activity || "Untitled Activity"}
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div className="flex space-x-1">
+                                                                                                                        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+                                                                                                                            <Button
+                                                                                                                                variant="ghost"
+                                                                                                                                size="icon"
+                                                                                                                                onClick={() => moveItem(dayIndex, itemIndex, "up")}
+                                                                                                                                disabled={itemIndex === 0}
+                                                                                                                                className="h-8 w-8 text-gray-500"
+                                                                                                                            >
+                                                                                                                                <ArrowUp className="h-4 w-4" />
+                                                                                                                            </Button>
+                                                                                                                        </motion.div>
+                                                                                                                        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+                                                                                                                            <Button
+                                                                                                                                variant="ghost"
+                                                                                                                                size="icon"
+                                                                                                                                onClick={() => moveItem(dayIndex, itemIndex, "down")}
+                                                                                                                                disabled={itemIndex === day.items.length - 1}
+                                                                                                                                className="h-8 w-8 text-gray-500"
+                                                                                                                            >
+                                                                                                                                <ArrowDown className="h-4 w-4" />
+                                                                                                                            </Button>
+                                                                                                                        </motion.div>
+                                                                                                                        <motion.div
+                                                                                                                            whileHover={{ scale: 1.2, rotate: 10 }}
+                                                                                                                            whileTap={{ scale: 0.9 }}
+                                                                                                                        >
+                                                                                                                            <Button
+                                                                                                                                variant="ghost"
+                                                                                                                                size="icon"
+                                                                                                                                onClick={() => removeItem(dayIndex, itemIndex)}
+                                                                                                                                className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50"
+                                                                                                                            >
+                                                                                                                                <Trash2 className="h-4 w-4" />
+                                                                                                                            </Button>
+                                                                                                                        </motion.div>
+                                                                                                                    </div>
+                                                                                                                </div>
 
-                                                                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                                                                                    <div>
-                                                                                                        <Label
-                                                                                                            htmlFor={`time-${dayIndex}-${itemIndex}`}
-                                                                                                            className="text-xs"
-                                                                                                        >
-                                                                                                            Time
-                                                                                                        </Label>
-                                                                                                        <Input
-                                                                                                            id={`time-${dayIndex}-${itemIndex}`}
-                                                                                                            type="time"
-                                                                                                            value={item.time}
-                                                                                                            onChange={(e) =>
-                                                                                                                updateItem(dayIndex, itemIndex, "time", e.target.value)
-                                                                                                            }
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                    <div>
-                                                                                                        <Label
-                                                                                                            htmlFor={`category-${dayIndex}-${itemIndex}`}
-                                                                                                            className="text-xs"
-                                                                                                        >
-                                                                                                            Category
-                                                                                                        </Label>
-                                                                                                        <Select
-                                                                                                            value={item.category}
-                                                                                                            onValueChange={(value) =>
-                                                                                                                updateItem(dayIndex, itemIndex, "category", value)
-                                                                                                            }
-                                                                                                        >
-                                                                                                            <SelectTrigger>
-                                                                                                                <SelectValue placeholder="Select category" />
-                                                                                                            </SelectTrigger>
-                                                                                                            <SelectContent>
-                                                                                                                <SelectItem value="transport">Transport</SelectItem>
-                                                                                                                <SelectItem value="accommodation">Accommodation</SelectItem>
-                                                                                                                <SelectItem value="food">Food & Dining</SelectItem>
-                                                                                                                <SelectItem value="sightseeing">Sightseeing</SelectItem>
-                                                                                                                <SelectItem value="activity">Activity</SelectItem>
-                                                                                                            </SelectContent>
-                                                                                                        </Select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div>
-                                                                                                    <Label
-                                                                                                        htmlFor={`activity-${dayIndex}-${itemIndex}`}
-                                                                                                        className="text-xs"
-                                                                                                    >
-                                                                                                        Activity
-                                                                                                    </Label>
-                                                                                                    <Input
-                                                                                                        id={`activity-${dayIndex}-${itemIndex}`}
-                                                                                                        value={item.activity}
-                                                                                                        placeholder="What are you planning to do?"
-                                                                                                        onChange={(e) =>
-                                                                                                            updateItem(dayIndex, itemIndex, "activity", e.target.value)
-                                                                                                        }
-                                                                                                    />
-                                                                                                </div>
-                                                                                                <div>
-                                                                                                    <Label
-                                                                                                        htmlFor={`location-${dayIndex}-${itemIndex}`}
-                                                                                                        className="text-xs"
-                                                                                                    >
-                                                                                                        Location
-                                                                                                    </Label>
-                                                                                                    <Input
-                                                                                                        id={`location-${dayIndex}-${itemIndex}`}
-                                                                                                        value={item.location}
-                                                                                                        placeholder="Where is this taking place?"
-                                                                                                        onChange={(e) =>
-                                                                                                            updateItem(dayIndex, itemIndex, "location", e.target.value)
-                                                                                                        }
-                                                                                                    />
-                                                                                                </div>
-                                                                                                <div>
-                                                                                                    <Label htmlFor={`notes-${dayIndex}-${itemIndex}`} className="text-xs">
-                                                                                                        Notes
-                                                                                                    </Label>
-                                                                                                    <Textarea
-                                                                                                        id={`notes-${dayIndex}-${itemIndex}`}
-                                                                                                        value={item.notes}
-                                                                                                        placeholder="Any additional details"
-                                                                                                        onChange={(e) =>
-                                                                                                            updateItem(dayIndex, itemIndex, "notes", e.target.value)
-                                                                                                        }
-                                                                                                        className="min-h-[80px]"
-                                                                                                    />
-                                                                                                </div>
+                                                                                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                                                                                    <div>
+                                                                                                                        <Label
+                                                                                                                            htmlFor={`time-${dayIndex}-${itemIndex}`}
+                                                                                                                            className="text-xs"
+                                                                                                                        >
+                                                                                                                            Time
+                                                                                                                        </Label>
+                                                                                                                        <Input
+                                                                                                                            id={`time-${dayIndex}-${itemIndex}`}
+                                                                                                                            type="time"
+                                                                                                                            value={item.time}
+                                                                                                                            onChange={(e) =>
+                                                                                                                                updateItem(dayIndex, itemIndex, "time", e.target.value)
+                                                                                                                            }
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                    <div>
+                                                                                                                        <Label
+                                                                                                                            htmlFor={`category-${dayIndex}-${itemIndex}`}
+                                                                                                                            className="text-xs"
+                                                                                                                        >
+                                                                                                                            Category
+                                                                                                                        </Label>
+                                                                                                                        <Select
+                                                                                                                            value={item.category}
+                                                                                                                            onValueChange={(value) =>
+                                                                                                                                updateItem(dayIndex, itemIndex, "category", value)
+                                                                                                                            }
+                                                                                                                        >
+                                                                                                                            <SelectTrigger>
+                                                                                                                                <SelectValue placeholder="Select category" />
+                                                                                                                            </SelectTrigger>
+                                                                                                                            <SelectContent>
+                                                                                                                                <SelectItem value="transport">Transport</SelectItem>
+                                                                                                                                <SelectItem value="accommodation">Accommodation</SelectItem>
+                                                                                                                                <SelectItem value="food">Food & Dining</SelectItem>
+                                                                                                                                <SelectItem value="sightseeing">Sightseeing</SelectItem>
+                                                                                                                                <SelectItem value="activity">Activity</SelectItem>
+                                                                                                                            </SelectContent>
+                                                                                                                        </Select>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div>
+                                                                                                                    <Label
+                                                                                                                        htmlFor={`activity-${dayIndex}-${itemIndex}`}
+                                                                                                                        className="text-xs"
+                                                                                                                    >
+                                                                                                                        Activity
+                                                                                                                    </Label>
+                                                                                                                    <Input
+                                                                                                                        id={`activity-${dayIndex}-${itemIndex}`}
+                                                                                                                        value={item.activity}
+                                                                                                                        placeholder="What are you planning to do?"
+                                                                                                                        onChange={(e) =>
+                                                                                                                            updateItem(dayIndex, itemIndex, "activity", e.target.value)
+                                                                                                                        }
+                                                                                                                    />
+                                                                                                                </div>
+                                                                                                                <div>
+                                                                                                                    <Label
+                                                                                                                        htmlFor={`location-${dayIndex}-${itemIndex}`}
+                                                                                                                        className="text-xs"
+                                                                                                                    >
+                                                                                                                        Location
+                                                                                                                    </Label>
+                                                                                                                    <Input
+                                                                                                                        id={`location-${dayIndex}-${itemIndex}`}
+                                                                                                                        value={item.location}
+                                                                                                                        placeholder="Where is this taking place?"
+                                                                                                                        onChange={(e) =>
+                                                                                                                            updateItem(dayIndex, itemIndex, "location", e.target.value)
+                                                                                                                        }
+                                                                                                                    />
+                                                                                                                </div>
+                                                                                                                <div>
+                                                                                                                    <Label htmlFor={`notes-${dayIndex}-${itemIndex}`} className="text-xs">
+                                                                                                                        Notes
+                                                                                                                    </Label>
+                                                                                                                    <Textarea
+                                                                                                                        id={`notes-${dayIndex}-${itemIndex}`}
+                                                                                                                        value={item.notes}
+                                                                                                                        placeholder="Any additional details"
+                                                                                                                        onChange={(e) =>
+                                                                                                                            updateItem(dayIndex, itemIndex, "notes", e.target.value)
+                                                                                                                        }
+                                                                                                                        className="min-h-[80px]"
+                                                                                                                    />
+                                                                                                                </div>
+                                                                                                            </motion.div>
+                                                                                                        ))
+                                                                                                    )
+                                                                                                }
+                                                                                            </AnimatePresence>
+                                                                                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                                                                                <Button
+                                                                                                    variant="outline"
+                                                                                                    onClick={() => addItem(dayIndex)}
+                                                                                                    className="w-full border-dashed"
+                                                                                                >
+                                                                                                    <Plus className="mr-2 h-4 w-4" />
+                                                                                                    Add Activity
+                                                                                                </Button>
                                                                                             </motion.div>
-                                                                                        ))
-                                                                                    )
-                                                                                    }
-                                                                                </AnimatePresence>
-                                                                                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                                                                                    <Button
-                                                                                        variant="outline"
-                                                                                        onClick={() => addItem(dayIndex)}
-                                                                                        className="w-full border-dashed"
-                                                                                    >
-                                                                                        <Plus className="mr-2 h-4 w-4" />
-                                                                                        Add Activity
-                                                                                    </Button>
-                                                                                </motion.div>
-                                                                            </div>
-                                                                        </CardContent>
-                                                                    </Card>
-                                                                </motion.div>
-                                                            </StaggerItem>
-                                                        ))
-                                                    )
-                                                    }
-                                                </StaggerContainer>
-                                            </CardContent>
-                                        </Card>
-                                    </div>
-                                ) : (
-                                    <FadeIn className="text-center py-12">
-                                        <h3 className="text-xl font-medium mb-2">No Itinerary Selected</h3>
-                                        <p className="text-gray-500">Select an itinerary from the list or create a new one</p>
-                                    </FadeIn>
-                                )
-                                }
-                            </SlideInRight>
-                        </div>
-                    )
+                                                                                        </div>
+                                                                                    </CardContent>
+                                                                                </Card>
+                                                                            </motion.div>
+                                                                        </StaggerItem>
+                                                                    ))
+                                                                )
+                                                            }
+                                                        </StaggerContainer>
+                                                    </CardContent>
+                                                </Card>
+                                            </div>
+                                        ) : (
+                                            <FadeIn className="text-center py-12">
+                                                <h3 className="text-xl font-medium mb-2">No Itinerary Selected</h3>
+                                                <p className="text-gray-500">Select an itinerary from the list or create a new one</p>
+                                            </FadeIn>
+                                        )
+                                    }
+                                </SlideInRight>
+                            </div>
+                        )
                     }
                 </TabsContent>
                 <TabsContent value="create">
@@ -734,46 +735,46 @@ export function FullItineraryPlanner() {
                         <h3 className="text-xl font-semibold mb-4">How Our AI Can Help You Plan</h3>
                         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {
-                            [
-                                {
-                                    icon: <MapPin className="h-6 w-6" />,
-                                    title: "Destination Insights",
-                                    description:
-                                        "Our AI analyzes thousands of reviews to suggest the best attractions, restaurants, and activities for your destination.",
-                                },
-                                {
-                                    icon: <Clock className="h-6 w-6" />,
-                                    title: "Optimal Scheduling",
-                                    description:
-                                        "Our AI helps you create the perfect daily schedule, considering opening hours, travel times, and avoiding crowds.",
-                                },
-                                {
-                                    icon: <Share2 className="h-6 w-6" />,
-                                    title: "Collaborative Planning",
-                                    description:
-                                        "Share your itinerary with travel companions and let everyone contribute to the perfect trip plan.",
-                                },
-                            ].map((feature, index) => (
-                                <StaggerItem key={index} index={index}>
-                                    <motion.div whileHover={{ y: -10 }} transition={{ type: "spring", stiffness: 300, damping: 10 }}>
-                                        <Card>
-                                            <CardContent className="pt-6">
-                                                <div className="text-center mb-4">
-                                                    <motion.div
-                                                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f7f6] text-[#00A699] mb-3"
-                                                        whileHover={{ rotate: 360 }}
-                                                        transition={{ duration: 0.8 }}
-                                                    >
-                                                        {feature.icon}
-                                                    </motion.div>
-                                                    <h4 className="text-lg font-medium">{feature.title}</h4>
-                                                </div>
-                                                <p className="text-gray-600 text-center">{feature.description}</p>
-                                            </CardContent>
-                                        </Card>
-                                    </motion.div>
-                                </StaggerItem>
-                            ))
+                                [
+                                    {
+                                        icon: <MapPin className="h-6 w-6" />,
+                                        title: "Destination Insights",
+                                        description:
+                                            "Our AI analyzes thousands of reviews to suggest the best attractions, restaurants, and activities for your destination.",
+                                    },
+                                    {
+                                        icon: <Clock className="h-6 w-6" />,
+                                        title: "Optimal Scheduling",
+                                        description:
+                                            "Our AI helps you create the perfect daily schedule, considering opening hours, travel times, and avoiding crowds.",
+                                    },
+                                    {
+                                        icon: <Share2 className="h-6 w-6" />,
+                                        title: "Collaborative Planning",
+                                        description:
+                                            "Share your itinerary with travel companions and let everyone contribute to the perfect trip plan.",
+                                    },
+                                ].map((feature, index) => (
+                                    <StaggerItem key={index} index={index}>
+                                        <motion.div whileHover={{ y: -10 }} transition={{ type: "spring", stiffness: 300, damping: 10 }}>
+                                            <Card>
+                                                <CardContent className="pt-6">
+                                                    <div className="text-center mb-4">
+                                                        <motion.div
+                                                            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f7f6] text-[#00A699] mb-3"
+                                                            whileHover={{ rotate: 360 }}
+                                                            transition={{ duration: 0.8 }}
+                                                        >
+                                                            {feature.icon}
+                                                        </motion.div>
+                                                        <h4 className="text-lg font-medium">{feature.title}</h4>
+                                                    </div>
+                                                    <p className="text-gray-600 text-center">{feature.description}</p>
+                                                </CardContent>
+                                            </Card>
+                                        </motion.div>
+                                    </StaggerItem>
+                                ))
                             }
                         </StaggerContainer>
                     </FadeInUp>
