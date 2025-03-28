@@ -72,7 +72,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
             if (token && !token.roleExplicitlyChosen) {
                 const dbUser = await prisma.user.findUnique({
-                    where: { id: token.id },
+                    where: { id: token.id! },
                     select: { roleExplicitlyChosen: true }
                 });
                 if (dbUser) {

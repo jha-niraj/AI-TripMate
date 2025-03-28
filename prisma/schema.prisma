@@ -23,7 +23,6 @@ model User {
     roleExplicitlyChosen Boolean   @default(false)
 	createdAt            DateTime  @default(now())
 
-
     accounts              Account[]
 
     @@index([email])
