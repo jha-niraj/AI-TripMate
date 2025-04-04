@@ -4,6 +4,7 @@ import { FeaturesSection } from "@/components/(landingpage)/features-section"
 import { HeroSection } from "@/components/(landingpage)/hero-section"
 import { HowItWorks } from "@/components/(landingpage)/howitworks"
 import { PopularDestinations } from "@/components/(landingpage)/populardestinations"
+import { SeasonalRecommendations } from "@/components/(landingpage)/seasonalrecommendations"
 import { TestimonialsSection } from "@/components/(landingpage)/testimonials-section"
 import { TravelBlog } from "@/components/(landingpage)/travelblog"
 import { TravelPackages } from "@/components/(landingpage)/travelpackages"
@@ -19,6 +20,7 @@ export default function Home() {
 				<HeroSection />
 				<PopularDestinations />
 				<FeaturesSection />
+				<SeasonalRecommendations />
 				<TravelPackages />
 				<TestimonialsSection />
 				<HowItWorks />

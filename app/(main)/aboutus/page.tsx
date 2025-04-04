@@ -7,8 +7,8 @@ import { AboutTechnology } from "./_components/abouttechnology";
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-white">
-            <main>
+        <div className="min-h-screen bg-white w-full">
+            <main className="max-w-7xl mx-auto px-4 py-8">
                 <AboutHero />
                 <AboutMission />
                 <AboutTechnology />

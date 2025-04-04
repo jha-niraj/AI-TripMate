@@ -1,6 +1,7 @@
 interface GoogleMapProps {
     destination: string
 }
+
 export function GoogleMap({ destination }: GoogleMapProps) {
     // This is a placeholder for a real Google Maps integration
     // In a real application, you would use the Google Maps API
@@ -17,4 +18,3 @@ export function GoogleMap({ destination }: GoogleMapProps) {
         </div>
     )
 }
-

@@ -1,3 +1,7 @@
+"use client"
+
+import { motion } from "framer-motion"
+
 interface PlaceBannerProps {
     destination: string
 }
@@ -17,17 +21,24 @@ export function PlaceBanner({ destination }: PlaceBannerProps) {
 
     return (
         <div className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
-            <div
+            <motion.div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                     backgroundImage: `url('${getBannerImage(destination)}')`,
                     filter: "brightness(0.7)",
                 }}
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1.5 }}
             />
-            <div className="relative h-full flex items-center justify-center">
+            <motion.div
+                className="relative h-full flex items-center justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+            >
                 <h1 className="text-5xl font-bold text-white">{destination}</h1>
-            </div>
+            </motion.div>
         </div>
     )
 }
-

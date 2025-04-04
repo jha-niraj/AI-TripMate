@@ -7,6 +7,7 @@ interface MotionWrapperProps extends MotionProps {
     children: ReactNode
     className?: string
 }
+
 export function FadeIn({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div
@@ -20,6 +21,7 @@ export function FadeIn({ children, className, ...rest }: MotionWrapperProps) {
         </motion.div>
     )
 }
+
 export function FadeInUp({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div
@@ -33,6 +35,7 @@ export function FadeInUp({ children, className, ...rest }: MotionWrapperProps) {
         </motion.div>
     )
 }
+
 export function SlideInLeft({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div
@@ -46,6 +49,7 @@ export function SlideInLeft({ children, className, ...rest }: MotionWrapperProps
         </motion.div>
     )
 }
+
 export function SlideInRight({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div
@@ -59,6 +63,7 @@ export function SlideInRight({ children, className, ...rest }: MotionWrapperProp
         </motion.div>
     )
 }
+
 export function ScaleIn({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div
@@ -72,6 +77,7 @@ export function ScaleIn({ children, className, ...rest }: MotionWrapperProps) {
         </motion.div>
     )
 }
+
 export function StaggerContainer({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div initial="hidden" animate="visible" className={className} {...rest}>
@@ -79,6 +85,7 @@ export function StaggerContainer({ children, className, ...rest }: MotionWrapper
         </motion.div>
     )
 }
+
 export function StaggerItem({ children, className, index = 0, ...rest }: MotionWrapperProps & { index?: number }) {
     return (
         <motion.div
@@ -100,6 +107,7 @@ export function StaggerItem({ children, className, index = 0, ...rest }: MotionW
         </motion.div>
     )
 }
+
 export function HoverScale({ children, className, ...rest }: MotionWrapperProps) {
     return (
         <motion.div

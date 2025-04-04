@@ -27,7 +27,7 @@ export function HeroSection() {
                     transition={{ duration: 1.5 }}
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
+                        backgroundImage: "url('/herosectionimage.png')",
                         filter: "brightness(0.7)",
                     }}
                 />
@@ -63,7 +63,7 @@ export function HeroSection() {
                                 <Input
                                     type="text"
                                     placeholder="Search for a destination (e.g., Paris, Tokyo...)"
-                                    className="w-full h-12 px-4 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#00A699]"
+                                    className="w-full h-12 px-4 rounded-lg placeholder:text-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#00A699]"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     onKeyDown={(e) => e.key === "Enter" && handleSearch()}

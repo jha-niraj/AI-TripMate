@@ -6,8 +6,8 @@ import { StaggerContainer, StaggerItem } from "@/components/motionwrapper";
 
 export function AboutMission() {
     return (
-        <section className="py-16">
-            <div className="container mx-auto px-4">
+        <section className="">
+            <div className="mx-auto px-4">
                 <motion.div
                     className="max-w-3xl mx-auto text-center mb-16"
                     initial={{ opacity: 0, y: 20 }}

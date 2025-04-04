@@ -24,7 +24,7 @@ export function CommunitySection() {
             id: "1",
             user: {
                 name: "Vikram Mehta",
-                avatar: "/placeholder.svg?height=100&width=100",
+                avatar: "https://media.istockphoto.com/id/1485546774/photo/bald-man-smiling-at-camera-standing-with-arms-crossed.jpg?s=612x612&w=0&k=20&c=9vuq6HxeSZfhZ7Jit_2HPVLyoajffb7h_SbWssh_bME=",
                 initials: "VM",
             },
             destination: "Rajasthan",
@@ -32,13 +32,13 @@ export function CommunitySection() {
                 "Just returned from an amazing 10-day trip across Rajasthan! The palaces in Udaipur were absolutely breathtaking. Has anyone visited the desert camps in Jaisalmer? Planning my next trip there!",
             likes: 42,
             comments: 15,
-            image: "/placeholder.svg?height=300&width=500",
+            image: "https://media.istockphoto.com/id/1224021113/photo/indian-cameleers-camel-driver-with-camel-silhouettes-in-dunes-on-sunset-jaisalmer-rajasthan.jpg?s=612x612&w=0&k=20&c=MeF2Dl4ya1NVOWM_I_xo3EPd8E-iazBghYhjiyRaTcU=",
         },
         {
             id: "2",
             user: {
                 name: "Meera Patel",
-                avatar: "/placeholder.svg?height=100&width=100",
+                avatar: "https://media.istockphoto.com/id/1313502972/photo/portrait-of-beautiful-woman-having-fun.jpg?s=612x612&w=0&k=20&c=DHGWp3wIoSlpjK9xFdARpgpyo4t-hIzuqOSx5ZyRsHA=",
                 initials: "MP",
             },
             destination: "Kerala",
@@ -46,20 +46,7 @@ export function CommunitySection() {
                 "The houseboat experience in Alleppey was so peaceful. I highly recommend visiting during monsoon season - everything is so green and the waterfalls are at their fullest!",
             likes: 38,
             comments: 7,
-        },
-        {
-            id: "3",
-            user: {
-                name: "Arjun Singh",
-                avatar: "/placeholder.svg?height=100&width=100",
-                initials: "AS",
-            },
-            destination: "Himachal Pradesh",
-            content:
-                "Trekking in Spiti Valley was the highlight of my year! The landscapes are otherworldly. Make sure to acclimatize properly if you're planning a visit.",
-            likes: 56,
-            comments: 23,
-            image: "/placeholder.svg?height=300&width=500",
+            image: "https://media.istockphoto.com/id/511119924/photo/tea-plantations-and-river-in-hills-kerala-india.jpg?s=612x612&w=0&k=20&c=pYHem1q8SIdCC7t7pv3s6QM1ZrmU3nkCoSaEQMg8vqg=",
         },
     ]
 

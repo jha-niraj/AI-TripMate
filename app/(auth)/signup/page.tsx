@@ -25,7 +25,7 @@ export default function SignupForm() {
 
     useEffect(() => {
         if (status === "authenticated") {
-            router.push("/explore");
+            router.push("/dashboard");
         }
     }, [router, status]);
 

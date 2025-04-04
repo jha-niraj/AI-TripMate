@@ -19,7 +19,7 @@ export function TestimonialsSection() {
         {
             id: 1,
             name: "Sarah Johnson",
-            photo: "/placeholder.svg?height=100&width=100",
+            photo: "https://media.istockphoto.com/id/1029797636/photo/school-girl-stock-image.jpg?s=612x612&w=0&k=20&c=vTO9wMeghrSTzTrKNvv_vBmjF7yJMMPA-coFg3bab2w=",
             quote:
                 "AI Trip Mate transformed our family vacation! The personalized recommendations were spot on, and we discovered places we would have never found on our own.",
             location: "London, UK",
@@ -27,7 +27,7 @@ export function TestimonialsSection() {
         {
             id: 2,
             name: "Michael Chen",
-            photo: "/placeholder.svg?height=100&width=100",
+            photo: "https://media.istockphoto.com/id/1167770705/photo/young-indian-man-wearing-orange-sweater-over-isolated-white-background-approving-doing.jpg?s=612x612&w=0&k=20&c=Og7mZPpLzby9Cfs5jFgxGz6xGowpjV3Pl4WD_vtL7Sw=",
             quote:
                 "As a solo traveler, I was amazed by how well the AI understood my preferences. The chatbot was incredibly helpful when I needed to make last-minute changes to my itinerary.",
             location: "Toronto, Canada",
@@ -35,7 +35,7 @@ export function TestimonialsSection() {
         {
             id: 3,
             name: "Elena Rodriguez",
-            photo: "/placeholder.svg?height=100&width=100",
+            photo: "https://media.istockphoto.com/id/1496615445/photo/portrait-of-beautiful-happy-woman-smiling-during-sunset-outdoor.jpg?s=612x612&w=0&k=20&c=_HXfCjbresNg_9Y-z1XHrw-JPBzov9l39RK_8Qmv7nk=",
             quote:
                 "The local insights feature is a game-changer! We enjoyed authentic experiences and avoided tourist traps thanks to AI Trip Mate's suggestions.",
             location: "Barcelona, Spain",
@@ -43,7 +43,7 @@ export function TestimonialsSection() {
         {
             id: 4,
             name: "David Kim",
-            photo: "/placeholder.svg?height=100&width=100",
+            photo: "https://media.istockphoto.com/id/1485546774/photo/bald-man-smiling-at-camera-standing-with-arms-crossed.jpg?s=612x612&w=0&k=20&c=9vuq6HxeSZfhZ7Jit_2HPVLyoajffb7h_SbWssh_bME=",
             quote:
                 "Planning our honeymoon was stress-free with AI Trip Mate. The recommendations were romantic and tailored perfectly to our interests.",
             location: "Seoul, South Korea",

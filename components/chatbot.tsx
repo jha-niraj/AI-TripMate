@@ -1,26 +1,80 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Send, X, Bot } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Send, X, Bot, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Input } from "./ui/input"
+import { toast } from "sonner"
+import { processChatMessage } from "@/actions/chat.action"
 
 interface ChatbotProps {
     destination?: string
 }
 
+// Define the Message type
+interface Message {
+    text: string;
+    isUser: boolean;
+    timestamp: number;
+}
+
+// Number of milliseconds in 5 days
+const FIVE_DAYS_MS = 5 * 24 * 60 * 60 * 1000;
+
 export function Chatbot({ destination }: ChatbotProps) {
     const [isOpen, setIsOpen] = useState(false)
-    const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>([
-        {
+    const [messages, setMessages] = useState<Message[]>([])
+    const [inputValue, setInputValue] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const [hasWarning, setHasWarning] = useState(false)
+    const messageEndRef = useRef<HTMLDivElement>(null)
+
+    const initializeChat = () => {
+        const welcomeMessage = {
             text: destination
                 ? `Hi! How can I help you plan your stay in ${destination}?`
                 : "Hi! I'm your AI Trip Mate. How can I help you plan your next adventure in India?",
             isUser: false,
-        },
-    ])
-    const [inputValue, setInputValue] = useState("")
+            timestamp: new Date().getTime()
+        }
+        setMessages([welcomeMessage])
+    }
 
-    // Disable scrolling when modal is open
+    // Load messages from localStorage and clean up old conversations
+    useEffect(() => {
+        const storedData = localStorage.getItem("tripMateChatMessages")
+
+        if (storedData) {
+            try {
+                const parsedData = JSON.parse(storedData)
+
+                // Check if the data has expired (older than 5 days)
+                const currentTime = new Date().getTime()
+                const lastMessageTime = Math.max(...parsedData.map((msg: Message) => msg.timestamp))
+
+                if (currentTime - lastMessageTime > FIVE_DAYS_MS) {
+                    // Data has expired, clear it
+                    localStorage.removeItem("tripMateChatMessages")
+                    initializeChat()
+                } else {
+                    // Data is still valid
+                    setMessages(parsedData)
+                }
+            } catch (error) {
+                console.error("Failed to parse stored messages:", error)
+                initializeChat()
+            }
+        } else {
+            initializeChat()
+        }
+    }, [destination, initializeChat])
+
+    useEffect(() => {
+        if (messages.length > 0) {
+            localStorage.setItem("tripMateChatMessages", JSON.stringify(messages))
+        }
+    }, [messages])
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden"
@@ -32,43 +86,76 @@ export function Chatbot({ destination }: ChatbotProps) {
         }
     }, [isOpen])
 
-    const handleSendMessage = () => {
+    useEffect(() => {
+        messageEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }, [messages])
+
+    const handleSendMessage = async () => {
         if (!inputValue.trim()) return
 
-        // Add user message
-        setMessages([...messages, { text: inputValue, isUser: true }])
+        const userMessage: Message = {
+            text: inputValue,
+            isUser: true,
+            timestamp: new Date().getTime()
+        }
 
-        // Simulate AI response
-        setTimeout(() => {
-            let response = "I'm processing your request..."
+        setMessages(prev => [...prev, userMessage])
+        setInputValue("")
+        setIsLoading(true)
 
-            if (inputValue.toLowerCase().includes("hotel") || inputValue.toLowerCase().includes("stay")) {
-                response = destination
-                    ? `There are several great hotels in ${destination} for all budgets. Would you like luxury, mid-range, or budget options?`
-                    : "I can recommend hotels based on your destination. Which Indian state are you planning to visit?"
-            } else if (
-                inputValue.toLowerCase().includes("restaurant") ||
-                inputValue.toLowerCase().includes("food") ||
-                inputValue.toLowerCase().includes("eat")
-            ) {
-                response = destination
-                    ? `${destination} has amazing culinary options! Are you interested in local cuisine or international restaurants?`
-                    : "India has diverse culinary traditions. Tell me which state you're visiting, and I'll suggest some authentic dishes!"
-            } else if (
-                inputValue.toLowerCase().includes("attraction") ||
-                inputValue.toLowerCase().includes("visit") ||
-                inputValue.toLowerCase().includes("see")
-            ) {
-                response = destination
-                    ? `${destination} has many wonderful attractions. Are you interested in historical sites, natural landscapes, or cultural experiences?`
-                    : "India is rich in attractions. Which state would you like to explore?"
+        try {
+            // Prepare form data for server action - only send what's needed
+            const formData = new FormData()
+            formData.append("input", inputValue)
+            if (destination) {
+                formData.append("destination", destination)
             }
 
-            setMessages((prev) => [...prev, { text: response, isUser: false }])
-        }, 1000)
+            // Call server action
+            const response = await processChatMessage(formData)
 
-        // Clear input
-        setInputValue("")
+            if (response.success) {
+                const botMessage: Message = {
+                    text: response.message!,
+                    isUser: false,
+                    timestamp: new Date().getTime()
+                }
+                setMessages(prev => [...prev, botMessage])
+
+                // Handle warning flag
+                if (response.warning) {
+                    setHasWarning(true)
+                }
+            } else {
+                // Handle error
+                toast("Error", {
+                    description: response.error || "Something went wrong. Please try again.",
+                })
+
+                // Add generic error message
+                const errorMessage: Message = {
+                    text: "I'm having trouble processing your request. Please try again later.",
+                    isUser: false,
+                    timestamp: new Date().getTime()
+                }
+                setMessages(prev => [...prev, errorMessage])
+            }
+        } catch (error) {
+            console.error("Error sending message:", error)
+            toast("Error", {
+                description: "Failed to send your message. Please try again.",
+            })
+
+            // Add error message
+            const errorMessage: Message = {
+                text: "Something went wrong with our chat service. Please try again later.",
+                isUser: false,
+                timestamp: new Date().getTime()
+            }
+            setMessages(prev => [...prev, errorMessage])
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -100,7 +187,7 @@ export function Chatbot({ destination }: ChatbotProps) {
                                     <h3 className="font-semibold text-xl flex items-center">
                                         <Bot className="mr-2" /> AI Trip Mate
                                     </h3>
-                                    <p className="text-sm opacity-80">Your intelligent travel companion</p>
+                                    <p className="text-sm opacity-80">Your intelligent travel companion for India</p>
                                 </div>
                                 <Button
                                     variant="ghost"
@@ -140,22 +227,35 @@ export function Chatbot({ destination }: ChatbotProps) {
                                         </div>
                                     ))
                                 }
+                                {/* Invisible div for auto-scrolling */}
+                                <div ref={messageEndRef} />
                             </div>
                             <div className="border-t p-4">
+                                {hasWarning && (
+                                    <div className="mb-2 p-2 bg-yellow-50 text-yellow-800 text-xs rounded-lg">
+                                        Please maintain respectful communication. Further inappropriate language may result in restricted access.
+                                    </div>
+                                )}
                                 <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                                    <input
+                                    <Input
                                         type="text"
                                         placeholder="Ask me anything about your trip to India..."
                                         className="flex-1 bg-transparent border-none focus:outline-none"
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
-                                        onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+                                        onKeyDown={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
+                                        disabled={isLoading}
                                     />
                                     <Button
                                         className="rounded-full bg-[#00A699] hover:bg-[#008b80] h-10 w-10 p-0 ml-2"
                                         onClick={handleSendMessage}
+                                        disabled={isLoading}
                                     >
-                                        <Send size={18} />
+                                        {isLoading ? (
+                                            <Loader2 size={18} className="animate-spin" />
+                                        ) : (
+                                            <Send size={18} />
+                                        )}
                                     </Button>
                                 </div>
                                 <p className="text-xs text-center text-gray-500 mt-2">

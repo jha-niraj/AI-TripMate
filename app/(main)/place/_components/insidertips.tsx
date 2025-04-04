@@ -3,6 +3,7 @@ import { Lightbulb } from "lucide-react"
 interface InsiderTipsProps {
     destination: string
 }
+
 export function InsiderTips({ destination }: InsiderTipsProps) {
     const getTips = (dest: string) => {
         const tips: Record<string, string[]> = {
@@ -69,3 +70,4 @@ export function InsiderTips({ destination }: InsiderTipsProps) {
         </div>
     )
 }
+

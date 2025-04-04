@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function AboutHero() {
     return (
-        <section className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
+        <section className="relative h-[40vh] min-h-[150px] pt-14 w-full overflow-hidden">
             <motion.div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -23,7 +23,7 @@ export function AboutHero() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
                     <motion.h1
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -31,7 +31,7 @@ export function AboutHero() {
                         About AI Trip Mate
                     </motion.h1>
                     <motion.p
-                        className="text-xl text-white"
+                        className="text-xl text-black"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
