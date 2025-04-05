@@ -144,7 +144,7 @@ export function PlaceInformation({ destination }: PlaceInformationProps) {
     const placeInfo = getPlaceInfo(destination)
 
     return (
-        <section className="py-8">
+        <section className="py-4">
             <FadeIn>
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
                     <div className="bg-gradient-to-r from-[#00A699] to-[#008b80] p-6">

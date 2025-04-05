@@ -20,7 +20,7 @@ export function CameraButton() {
             }}
         >
             <motion.button
-                onClick={() => router.push("/where-am-i")}
+                onClick={() => router.push("/whereami")}
                 className="flex items-center justify-center w-14 h-14 rounded-full bg-[#FF6F61] text-white shadow-lg hover:bg-[#e5645a]"
                 whileHover={{
                     scale: 1.1,

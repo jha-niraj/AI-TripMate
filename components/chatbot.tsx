@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { Send, X, Bot, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "./ui/input"
@@ -27,9 +27,11 @@ export function Chatbot({ destination }: ChatbotProps) {
     const [inputValue, setInputValue] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [hasWarning, setHasWarning] = useState(false)
+    const [isTyping, setIsTyping] = useState(false)
     const messageEndRef = useRef<HTMLDivElement>(null)
 
-    const initializeChat = () => {
+    // Memoize the initializeChat function to prevent useEffect dependency issues
+    const initializeChat = useCallback(() => {
         const welcomeMessage = {
             text: destination
                 ? `Hi! How can I help you plan your stay in ${destination}?`
@@ -38,7 +40,7 @@ export function Chatbot({ destination }: ChatbotProps) {
             timestamp: new Date().getTime()
         }
         setMessages([welcomeMessage])
-    }
+    }, [destination])
 
     // Load messages from localStorage and clean up old conversations
     useEffect(() => {
@@ -88,7 +90,7 @@ export function Chatbot({ destination }: ChatbotProps) {
 
     useEffect(() => {
         messageEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }, [messages])
+    }, [messages, isTyping])
 
     const handleSendMessage = async () => {
         if (!inputValue.trim()) return
@@ -102,6 +104,7 @@ export function Chatbot({ destination }: ChatbotProps) {
         setMessages(prev => [...prev, userMessage])
         setInputValue("")
         setIsLoading(true)
+        setIsTyping(true)
 
         try {
             // Prepare form data for server action - only send what's needed
@@ -111,8 +114,14 @@ export function Chatbot({ destination }: ChatbotProps) {
                 formData.append("destination", destination)
             }
 
+            // Add a small delay to show the typing indicator
+            await new Promise(resolve => setTimeout(resolve, 500))
+
             // Call server action
             const response = await processChatMessage(formData)
+
+            // Add a small delay before showing the response
+            await new Promise(resolve => setTimeout(resolve, 800))
 
             if (response.success) {
                 const botMessage: Message = {
@@ -155,6 +164,7 @@ export function Chatbot({ destination }: ChatbotProps) {
             setMessages(prev => [...prev, errorMessage])
         } finally {
             setIsLoading(false)
+            setIsTyping(false)
         }
     }
 
@@ -181,7 +191,7 @@ export function Chatbot({ destination }: ChatbotProps) {
             {
                 isOpen && (
                     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-                        <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl h-[70vh] flex flex-col animate-fade-in">
+                        <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[90vh] flex flex-col animate-fade-in">
                             <div className="bg-[#00A699] text-white p-4 rounded-t-xl flex justify-between items-center">
                                 <div>
                                     <h3 className="font-semibold text-xl flex items-center">
@@ -227,15 +237,32 @@ export function Chatbot({ destination }: ChatbotProps) {
                                         </div>
                                     ))
                                 }
-                                {/* Invisible div for auto-scrolling */}
+                                {
+                                isTyping && (
+                                    <div className="flex justify-start">
+                                        <div className="w-8 h-8 rounded-full bg-[#00A699] flex items-center justify-center text-white mr-2">
+                                            <Bot size={16} />
+                                        </div>
+                                        <div className="bg-gray-100 rounded-lg p-3 rounded-bl-none max-w-[80%]">
+                                            <div className="flex space-x-1 items-center h-5">
+                                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
+                                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "200ms" }}></div>
+                                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "400ms" }}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                                }
                                 <div ref={messageEndRef} />
                             </div>
                             <div className="border-t p-4">
-                                {hasWarning && (
-                                    <div className="mb-2 p-2 bg-yellow-50 text-yellow-800 text-xs rounded-lg">
-                                        Please maintain respectful communication. Further inappropriate language may result in restricted access.
-                                    </div>
-                                )}
+                                {
+                                    hasWarning && (
+                                        <div className="mb-2 p-2 bg-yellow-50 text-yellow-800 text-xs rounded-lg">
+                                            Please maintain respectful communication. Further inappropriate language may result in restricted access.
+                                        </div>
+                                    )
+                                }
                                 <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
                                     <Input
                                         type="text"
@@ -251,11 +278,13 @@ export function Chatbot({ destination }: ChatbotProps) {
                                         onClick={handleSendMessage}
                                         disabled={isLoading}
                                     >
-                                        {isLoading ? (
+                                        {
+                                        isLoading ? (
                                             <Loader2 size={18} className="animate-spin" />
                                         ) : (
                                             <Send size={18} />
-                                        )}
+                                        )
+                                        }
                                     </Button>
                                 </div>
                                 <p className="text-xs text-center text-gray-500 mt-2">
