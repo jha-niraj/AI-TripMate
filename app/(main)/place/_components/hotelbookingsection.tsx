@@ -30,7 +30,6 @@ export function HotelBookingSection({ destination }: HotelBookingSectionProps) {
                                         Book Your Home, Far From Home
                                     </h2>
                                 </motion.div>
-
                                 <FadeInUp>
                                     <p className="text-white text-lg mb-6 max-w-2xl">
                                         Find the perfect accommodation in {destination} that suits your style and budget. From luxury hotels
@@ -74,7 +73,7 @@ export function HotelBookingSection({ destination }: HotelBookingSectionProps) {
                             >
                                 <div className="absolute inset-0 bg-white shadow-lg rounded-lg transform rotate-3">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=300"
+                                        src="/place/hoteldemo.jpeg"
                                         alt="Luxury hotel"
                                         className="w-full h-full object-cover rounded-lg opacity-70"
                                         height={30}
@@ -83,7 +82,7 @@ export function HotelBookingSection({ destination }: HotelBookingSectionProps) {
                                 </div>
                                 <div className="absolute inset-0 bg-white shadow-lg rounded-lg transform -rotate-3">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=300"
+                                        src="/place/hoteldemo.jpeg"
                                         alt="Cozy homestay"
                                         className="w-full h-full object-cover rounded-lg opacity-70"
                                         height={30}
@@ -92,7 +91,7 @@ export function HotelBookingSection({ destination }: HotelBookingSectionProps) {
                                 </div>
                                 <div className="absolute inset-0 bg-white shadow-lg rounded-lg">
                                     <Image
-                                        src="/placeholder.svg?height=300&width=300"
+                                        src="/place/hoteldemo.jpeg"
                                         alt="Hotel room"
                                         className="w-full h-full object-cover rounded-lg"
                                         height={30}

@@ -12,95 +12,134 @@ export function SmartSuggestions({ destination }: SmartSuggestionsProps) {
             Maharashtra: [
                 {
                     name: "Gateway of India",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/maharasthra/indiagate.jpeg",
                     description: "Historic arch monument in Mumbai",
                 },
                 {
                     name: "Ajanta & Ellora Caves",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/maharasthra/eloracaves.jpeg",
                     description: "UNESCO World Heritage Sites",
                 },
-                { name: "Lonavala", image: "/placeholder.svg?height=200&width=300", description: "Popular hill station" },
+                { 
+                    name: "Lonavala", 
+                    image: "/place/maharasthra/lonavla.jpeg", 
+                    description: "Popular hill station" 
+                },
                 {
                     name: "Shirdi Sai Baba Temple",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/maharasthra/shirdisaibaba.jpeg",
                     description: "Famous spiritual destination",
                 },
                 {
                     name: "Mahabaleshwar",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/maharasthra/mahabaleshwor.jpeg",
                     description: "Scenic hill station with strawberry farms",
                 },
             ],
             Himachal: [
                 {
                     name: "Shimla",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/himachal/shimla.jpeg",
                     description: "Former summer capital of British India",
                 },
-                { name: "Manali", image: "/placeholder.svg?height=200&width=300", description: "Popular mountain resort town" },
-                { name: "Dharamshala", image: "/placeholder.svg?height=200&width=300", description: "Home to the Dalai Lama" },
+                { 
+                    name: "Manali", 
+                    image: "/place/himachal/manali.jpeg", 
+                    description: "Popular mountain resort town" 
+                },
+                { 
+                    name: "Dharamshala", 
+                    image: "/place/himachal/dharamshala.jpeg", 
+                    description: "Home to the Dalai Lama" 
+                },
                 {
                     name: "Spiti Valley",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/himachal/spiti.jpeg",
                     description: "Cold desert mountain valley",
                 },
-                { name: "Kullu", image: "/placeholder.svg?height=200&width=300", description: "Valley of Gods" },
+                { 
+                    name: "Kullu", 
+                    image: "/place/himachal/kullu.jpeg", 
+                    description: "Valley of Gods" 
+                },
             ],
             Rajasthan: [
-                { name: "Jaipur", image: "/placeholder.svg?height=200&width=300", description: "The Pink City" },
-                { name: "Udaipur", image: "/placeholder.svg?height=200&width=300", description: "City of Lakes" },
-                { name: "Jaisalmer", image: "/placeholder.svg?height=200&width=300", description: "The Golden City" },
+                { 
+                    name: "Jaipur", 
+                    image: "/place/rajasthan/jaipur.jpeg", 
+                    description: "The Pink City" 
+                },
+                { 
+                    name: "Udaipur", 
+                    image: "/place/rajasthan/udaipur.jpeg", 
+                    description: "City of Lakes" 
+                },
+                { 
+                    name: "Jaisalmer", 
+                    image: "/place/rajasthan/rajasthandesert.jpeg", 
+                    description: "The Golden City" 
+                },
                 {
                     name: "Ranthambore National Park",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/rajasthan/ranthambore.jpeg",
                     description: "Famous tiger reserve",
                 },
                 {
                     name: "Pushkar",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/rajasthan/pushkar.jpeg",
                     description: "Sacred town with Brahma Temple",
                 },
             ],
             Kerala: [
                 {
                     name: "Alleppey Backwaters",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/kerela/alleppey.jpeg",
                     description: "Famous for houseboat cruises",
                 },
                 {
                     name: "Munnar",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/kerela/munnar.jpeg",
                     description: "Hill station with tea plantations",
                 },
-                { name: "Kochi", image: "/placeholder.svg?height=200&width=300", description: "Historic port city" },
+                { 
+                    name: "Kochi", 
+                    image: "/place/kerela/kochi.jpeg", 
+                    description: "Historic port city"
+                },
                 {
                     name: "Wayanad",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/kerela/wayanad.jpeg",
                     description: "Green paradise with wildlife",
                 },
-                { name: "Kovalam Beach", image: "/placeholder.svg?height=200&width=300", description: "Crescent-shaped beach" },
+                { 
+                    name: "Kovalam Beach", 
+                    image: "/place/kerela/kovalam.jpeg", 
+                    description: "Crescent-shaped beach" 
+                },
             ],
             Goa: [
-                { name: "Calangute Beach", image: "/placeholder.svg?height=200&width=300", description: "Queen of Beaches" },
+                { 
+                    name: "Calangute Beach", 
+                    image: "/place/goa/calangute.jpeg", 
+                    description: "Queen of Beaches" },
                 {
                     name: "Basilica of Bom Jesus",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/goa/bomjesus.jpeg",
                     description: "UNESCO World Heritage Site",
                 },
                 {
                     name: "Dudhsagar Falls",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/goa/dudhsagar.jpeg",
                     description: "Four-tiered waterfall",
                 },
                 {
                     name: "Fort Aguada",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/goa/fortaguda.jpeg",
                     description: "17th-century Portuguese fort",
                 },
                 {
                     name: "Anjuna Flea Market",
-                    image: "/placeholder.svg?height=200&width=300",
+                    image: "/place/goa/anjunafleamarket.jpeg",
                     description: "Famous hippie market",
                 },
             ],
