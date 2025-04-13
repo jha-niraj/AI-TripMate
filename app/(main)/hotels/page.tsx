@@ -170,7 +170,7 @@ export default function HotelsMainPage() {
 											</Link>
 										))
 									}
-									<Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#000080]">
+									<Button variant="outline" className="border-white text-black hover:bg-white hover:text-[#000080]">
 										View All Destinations
 									</Button>
 								</div>
